@@ -15,6 +15,10 @@ def create_service() -> IVirtualizationService:
         from services.libvirt_service import LibvirtService
         return LibvirtService()
 
+    if "--qemu" in sys.argv:
+        from services.qemu_service import QemuService
+        return QemuService()
+
     if "--mock" in sys.argv:
         from services.mock_virt_service import MockVirtualizationService
         return MockVirtualizationService()
